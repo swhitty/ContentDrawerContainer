@@ -1,6 +1,6 @@
 {
   "name": "ContentDrawerContainer",
-  "version": "0.1,
+  "version": "0.1",
   "summary": "A Swift component that enables an interactive drawer to be displayed ala Apple Maps app.",
   "homepage": "https://github.com/swhitty/DictionaryDecoder",
   "authors": "Simon Whitty",

@@ -168,7 +168,6 @@ extension ContentDrawerView {
         }
     }
     
-    
     struct Constraints: ContentDrawerConstraintProviding {
         var drawerDirection = ContentDrawerContainer.Direction.topDown
         var drawerContentInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
