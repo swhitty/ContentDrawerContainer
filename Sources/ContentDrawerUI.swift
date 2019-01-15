@@ -29,7 +29,6 @@
 //  SOFTWARE.
 //
 
-
 import UIKit
 
 /// ContentDrawerUI
@@ -38,7 +37,7 @@ import UIKit
 /// ContentDrawerContainer provides different UI based on sizeclass
 /// and can animate the transition.
 
-protocol ContentDrawerUI {
+public protocol ContentDrawerUI {
     // direction to open the drawer
     var drawerDirection: ContentDrawerContainer.Direction { get }
     var initialOpenState: ContentDrawerContainer.OpenState { get }
@@ -59,13 +58,13 @@ protocol ContentDrawerUI {
 
 extension ContentDrawerContainer {
      /// Drawer may slide up from bottom of screen, or slide down from the top
-    enum Direction {
+    public enum Direction {
         case bottomUp
         case topDown
     }
     
     /// Drawer background may be a UIVisualEffect or any UIView
-    enum Background: Equatable {
+    public enum Background: Equatable {
         case visualEffect(UIVisualEffect)
         case view(UIView)
         
@@ -78,7 +77,7 @@ extension ContentDrawerContainer {
             }
         }
         
-        static func ==(lhs: ContentDrawerContainer.Background, rhs: ContentDrawerContainer.Background) -> Bool {
+        public static func ==(lhs: ContentDrawerContainer.Background, rhs: ContentDrawerContainer.Background) -> Bool {
             return lhs.backgroundIdentifier == rhs.backgroundIdentifier
         }
     }
@@ -95,7 +94,7 @@ extension ContentDrawerContainer {
 }
 
 
-protocol ContentDrawerConstraintProviding {
+public protocol ContentDrawerConstraintProviding {
     func drawerLength(for openState: ContentDrawerContainer.OpenState) -> ContentDrawerView.Length
     
     func fixedLength(of drawer: UIView, within parent: UIView) -> CGFloat
@@ -111,7 +110,7 @@ protocol ContentDrawerConstraintProviding {
 
 extension ContentDrawerView {
     
-    enum Length {
+    public enum Length {
         case maximum
         case fixed(CGFloat)
     }
@@ -315,11 +314,11 @@ extension ContentDrawerView.Length: Comparable {
             return val
         }
     }
-    static func <(lhs: ContentDrawerView.Length, rhs: ContentDrawerView.Length) -> Bool {
+    public static func <(lhs: ContentDrawerView.Length, rhs: ContentDrawerView.Length) -> Bool {
         return lhs.compareVal < rhs.compareVal
     }
     
-    static func ==(lhs: ContentDrawerView.Length, rhs: ContentDrawerView.Length) -> Bool {
+    public static func ==(lhs: ContentDrawerView.Length, rhs: ContentDrawerView.Length) -> Bool {
         switch (lhs, rhs) {
         case (.maximum, .maximum):
             return true

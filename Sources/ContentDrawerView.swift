@@ -31,7 +31,7 @@
 
 import UIKit
 
-final class ContentDrawerView: UIView {
+public final class ContentDrawerView: UIView {
     
     var drawer: UIView? {
         didSet { didChangeDrawer(from: oldValue) }
@@ -75,7 +75,7 @@ final class ContentDrawerView: UIView {
         }
     }
     
-    override func updateConstraints() {
+    override public func updateConstraints() {
         super.updateConstraints()
         
         let provider = ui.constraintProvider

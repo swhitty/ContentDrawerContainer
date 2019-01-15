@@ -36,19 +36,19 @@ import UIKit
 /// - drawer:  an auxillary view controller that is displayed above the content.
 ///            can be opened or closed by the user
 
-final class ContentDrawerContainer: UIViewController {
+public final class ContentDrawerContainer: UIViewController {
     
     /// A UIViewController that will appear within the drawer
-    var drawer: UIViewController? {
+    public var drawer: UIViewController? {
         didSet { didChangeDrawer(from: oldValue ) }
     }
     
     /// A UIViewController that will appear full size, underneath the drawer
-    var content: UIViewController? {
+    public var content: UIViewController? {
         didSet { didChangeContent(from: oldValue ) }
     }
     
-    enum OpenState {
+    public enum OpenState {
         case closed   //drawer is hidden
         case peek     //slightly open
         case partial  //approx 50% open
@@ -58,8 +58,7 @@ final class ContentDrawerContainer: UIViewController {
     private(set) var openState: OpenState?
 
     /// Open and close the drawer with a sprint animation
-    
-    func setOpenState(_ state: OpenState, animated: Bool, completion: (() -> ())? = nil) {
+    public func setOpenState(_ state: OpenState, animated: Bool, completion: (() -> ())? = nil) {
         openState = state
         guard let view = _view else { return }
         
@@ -83,7 +82,7 @@ final class ContentDrawerContainer: UIViewController {
 
     private(set) var _view: ContentDrawerView?
     
-    override func loadView() {
+    public override func loadView() {
         let ui = currentUI
         let openState = self.openState ?? ui.initialOpenState
         let length = ui.constraintProvider.drawerLength(for: openState)
@@ -100,8 +99,8 @@ final class ContentDrawerContainer: UIViewController {
         self.openState = openState
     }
     
-    private(set) var regularUI: ContentDrawerUI = ContentDrawerView.DefaultUI.topDown()
-    private(set) var compactUI: ContentDrawerUI = ContentDrawerView.DefaultUI.bottomUp()
+    public private(set) var regularUI: ContentDrawerUI = ContentDrawerView.DefaultUI.topDown()
+    public private(set) var compactUI: ContentDrawerUI = ContentDrawerView.DefaultUI.bottomUp()
     
     var currentUI: ContentDrawerUI {
         return ui(for: traitCollection)
@@ -116,7 +115,7 @@ final class ContentDrawerContainer: UIViewController {
         }
     }
     
-    func setUI(compact: ContentDrawerUI, regular: ContentDrawerUI, animated: Bool, completion: (() -> ())? = nil) {
+    public func setUI(compact: ContentDrawerUI, regular: ContentDrawerUI, animated: Bool, completion: (() -> ())? = nil) {
         compactUI = compact
         regularUI = compact
         
@@ -227,7 +226,7 @@ extension ContentDrawerContainer {
         return forWidth > 650.0 ? .regular : .compact
     }
     
-    override func overrideTraitCollection(forChild childViewController: UIViewController) -> UITraitCollection? {
+    override public func overrideTraitCollection(forChild childViewController: UIViewController) -> UITraitCollection? {
         guard childViewController == drawer,
               let view = _view else {
             return super.overrideTraitCollection(forChild: childViewController)
@@ -247,7 +246,7 @@ extension ContentDrawerContainer {
 
 extension ContentDrawerContainer {
     
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+    override public func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         guard let view = _view else { return }
         let newUI = ui(for: newCollection)
         coordinator.animate(alongsideTransition: { _ in
@@ -255,7 +254,7 @@ extension ContentDrawerContainer {
         })
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         guard let view = _view else { return }
         view.ui = ui(for: traitCollection)
     }
