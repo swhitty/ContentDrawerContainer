@@ -115,22 +115,22 @@ extension ContentDrawerView {
         case fixed(CGFloat)
     }
     
-    struct DefaultUI: ContentDrawerUI {
-        var drawerDirection: ContentDrawerContainer.Direction = .topDown
+    public struct DefaultUI: ContentDrawerUI {
+        public var drawerDirection: ContentDrawerContainer.Direction = .topDown
         
-        var initialOpenState = ContentDrawerContainer.OpenState.peek
+        public var initialOpenState = ContentDrawerContainer.OpenState.peek
         
-        var barStyle: UIBarStyle = .default
+        public var barStyle: UIBarStyle = .default
         
         static let sharedBlur = UIBlurEffect(style: .extraLight)
-        var drawerBackground = ContentDrawerContainer.Background.visualEffect(DefaultUI.sharedBlur)
-        var drawerTintColor = UIView().tintColor!
+        public var drawerBackground = ContentDrawerContainer.Background.visualEffect(DefaultUI.sharedBlur)
+        public var drawerTintColor = UIView().tintColor!
         
-        static func topDown() -> DefaultUI {
+        public static func topDown() -> DefaultUI {
             return DefaultUI()
         }
         
-        static func bottomUp() -> DefaultUI {
+        public static func bottomUp() -> DefaultUI {
             var ui = DefaultUI()
             ui.drawerDirection = .bottomUp
             ui.drawerWidth = .maximum
@@ -139,11 +139,11 @@ extension ContentDrawerView {
         }
         
         var drawerWidth = Length.fixed(320)
-        var drawerCornerRadius: CGFloat = 13.0
-        var drawerCorners: UIRectCorner = .allCorners
-        var drawerShadowColor = UIColor(white: 0.0, alpha: 0.1)
-        var drawerShadowRadius: CGFloat = 3.0
-        var drawerShadowOffset: CGSize = .zero
+        public var drawerCornerRadius: CGFloat = 13.0
+        public var drawerCorners: UIRectCorner = .allCorners
+        public var drawerShadowColor = UIColor(white: 0.0, alpha: 0.1)
+        public var drawerShadowRadius: CGFloat = 3.0
+        public var drawerShadowOffset: CGSize = .zero
         
         var constraints: Constraints {
             var constraints = Constraints()
@@ -163,7 +163,7 @@ extension ContentDrawerView {
             return constraints
         }
         
-        var constraintProvider: ContentDrawerConstraintProviding {
+        public var constraintProvider: ContentDrawerConstraintProviding {
             return constraints
         }
     }
@@ -273,7 +273,7 @@ extension ContentDrawerView {
 
 
 extension ContentDrawerView.DefaultUI: Equatable {
-    static func ==(lhs: ContentDrawerView.DefaultUI, rhs: ContentDrawerView.DefaultUI) -> Bool {
+    public static func ==(lhs: ContentDrawerView.DefaultUI, rhs: ContentDrawerView.DefaultUI) -> Bool {
         return
             lhs.drawerDirection == rhs.drawerDirection &&
             lhs.initialOpenState == rhs.initialOpenState &&

@@ -55,7 +55,7 @@ public final class ContentDrawerContainer: UIViewController {
         case open     //fully open
     }
     
-    private(set) var openState: OpenState?
+    public private(set) var openState: OpenState?
 
     /// Open and close the drawer with a sprint animation
     public func setOpenState(_ state: OpenState, animated: Bool, completion: (() -> ())? = nil) {
@@ -260,7 +260,7 @@ extension ContentDrawerContainer {
     }
 }
 
-extension UIViewController {
+public extension UIViewController {
     var contentDrawerContainer: ContentDrawerContainer? {
         guard let parent = self.parent else { return nil }
         
