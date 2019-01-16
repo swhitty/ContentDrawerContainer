@@ -4,8 +4,8 @@ A Swift component that enables an interactive drawer to be displayed ala Apple M
 ## Usage
 ```swift
 let container = ContentDrawerContainer()
-container.content = DetailViewController()
-container.drawer = SettingsViewController()
+container.content = MapViewController()
+container.drawer = ListViewController()
 
 container.setOpenState(.closed, animated: true)
 ```
