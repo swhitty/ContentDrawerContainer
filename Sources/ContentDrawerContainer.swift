@@ -80,7 +80,7 @@ public final class ContentDrawerContainer: UIViewController {
         didSet { didChangeResizer(from: oldValue) }
     }
 
-    private(set) var _view: ContentDrawerView?
+    public private(set) var _view: ContentDrawerView?
     
     public override func loadView() {
         let ui = currentUI
@@ -102,7 +102,7 @@ public final class ContentDrawerContainer: UIViewController {
     public private(set) var regularUI: ContentDrawerUI = ContentDrawerView.DefaultUI.topDown()
     public private(set) var compactUI: ContentDrawerUI = ContentDrawerView.DefaultUI.bottomUp()
     
-    var currentUI: ContentDrawerUI {
+    public var currentUI: ContentDrawerUI {
         return ui(for: traitCollection)
     }
     

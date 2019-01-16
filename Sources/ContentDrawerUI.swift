@@ -84,7 +84,7 @@ extension ContentDrawerContainer {
 
     /// Returns the current `UIBlurEffect` (if any) used by the drawer background
     /// Useful for creating `UIVibrancyEffect` referencing the `UIBlurEffect`.
-    var drawerBlurEffect: UIBlurEffect? {
+    public var drawerBlurEffect: UIBlurEffect? {
         guard case .visualEffect(let effect) = currentUI.drawerBackground else {
             return nil
         }

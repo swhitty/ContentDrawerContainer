@@ -49,8 +49,8 @@ public final class ContentDrawerView: UIView {
         didSet { didChangeUI(from: oldValue) }
     }
     
-    let containerDrawer = DrawerContainerView(frame: .zero)
-    let containerContent = UIView(frame: .zero)
+    public let containerDrawer = DrawerContainerView(frame: .zero)
+    public let containerContent = UIView(frame: .zero)
     
     init(ui: ContentDrawerUI, openLength: ContentDrawerView.Length) {
         self.ui = ui

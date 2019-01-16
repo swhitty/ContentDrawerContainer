@@ -38,7 +38,7 @@ import UIKit
 /// - various techniques have been used to ensure the view is rendered and animated quickly 
 ///   and easily via UIView implicit animations.
 
-final class DrawerContainerView: UIView {
+public final class DrawerContainerView: UIView {
     
     let contentView: UIView
     
@@ -150,7 +150,7 @@ final class DrawerContainerView: UIView {
     
     required init?(coder aDecoder: NSCoder) { fatalError("not implemented") }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         backgroundView.layer.cornerRadius = cornerRadius
