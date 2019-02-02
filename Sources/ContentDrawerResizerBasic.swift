@@ -146,6 +146,10 @@ extension ContentDrawerContainer.ResizerBasic: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy other: UIGestureRecognizer) -> Bool {
         guard let scrollView = other.view as? UIScrollView else { return true }
         
+        if let openState = delegate?.resizer(currentOpenState: self), openState != .open {
+            return true
+        }
+
         if gestureRecognizer == self.swipeUp {
             return canUpGesturePrevent(scrollView: scrollView)
         } else if gestureRecognizer == self.swipeDown {
@@ -153,6 +157,11 @@ extension ContentDrawerContainer.ResizerBasic: UIGestureRecognizerDelegate {
         } else {
             return false
         }
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+
+        return false
     }
     
     func canUpGesturePrevent(scrollView: UIScrollView) -> Bool {
@@ -168,7 +177,7 @@ extension ContentDrawerContainer.ResizerBasic: UIGestureRecognizerDelegate {
     
     func canDownGesturePrevent(scrollView: UIScrollView) -> Bool {
         guard let direction = delegate?.resizer(currentDirection: self) else { return false }
-        
+
         switch direction {
         case .bottomUp:
             return scrollView.canScrollUp == false
