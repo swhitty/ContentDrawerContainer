@@ -117,7 +117,7 @@ public final class ContentDrawerContainer: UIViewController {
     
     public func setUI(compact: ContentDrawerUI, regular: ContentDrawerUI, animated: Bool, completion: (() -> ())? = nil) {
         compactUI = compact
-        regularUI = compact
+        regularUI = regular
         
         let coordinator = TransitionCoordinator(duration: animated ? 0.2 : 0.0,
                                                 delay: 0.0,
