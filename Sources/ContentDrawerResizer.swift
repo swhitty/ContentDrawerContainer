@@ -29,11 +29,11 @@
 //  SOFTWARE.
 //
 
-protocol ContentDrawerResizer: class {
+protocol ContentDrawerResizer: AnyObject {
     var delegate: ContentDrawerResizerDelegate? { get set }
 }
 
-protocol ContentDrawerResizerDelegate: class {
+protocol ContentDrawerResizerDelegate: AnyObject {
     func resizer(currentDirection resizer: ContentDrawerResizer) -> ContentDrawerContainer.Direction
     func resizer(currentOpenState resizer: ContentDrawerResizer) -> ContentDrawerContainer.OpenState
     func resizer(_ resizer: ContentDrawerResizer, setOpenState state: ContentDrawerContainer.OpenState, animated: Bool)
