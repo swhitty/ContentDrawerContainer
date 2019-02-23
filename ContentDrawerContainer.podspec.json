@@ -1,6 +1,6 @@
 {
   "name": "ContentDrawerContainer",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "summary": "A Swift component that enables an interactive drawer to be displayed ala Apple Maps app.",
   "homepage": "https://github.com/swhitty/ContentDrawerContainer",
   "authors": "Simon Whitty",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/swhitty/ContentDrawerContainer.git",
-    "tag": "0.1.3"
+    "tag": "0.1.4"
   },
   "platforms": {
     "ios": "9.0"
