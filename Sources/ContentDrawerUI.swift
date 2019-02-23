@@ -135,10 +135,18 @@ extension ContentDrawerView {
             ui.drawerDirection = .bottomUp
             ui.drawerWidth = .maximum
             ui.drawerCorners = [.topLeft, .topRight]
+            ui.drawerHeightClosed = Length.fixed(86)
+            ui.drawerHeightPeek = Length.fixed(86)
+            ui.drawerHeightPartial = Length.fixed(250)
+            ui.drawerHeightOpen = Length.maximum
             return ui
         }
         
-        var drawerWidth = Length.fixed(320)
+        public var drawerWidth = Length.fixed(320)
+        public var drawerHeightClosed = Length.fixed(197)
+        public var drawerHeightPeek = Length.fixed(197)
+        public var drawerHeightPartial = Length.fixed(250)
+        public var drawerHeightOpen = Length.maximum
         public var drawerCornerRadius: CGFloat = 13.0
         public var drawerCorners: UIRectCorner = .allCorners
         public var drawerShadowColor = UIColor(white: 0.0, alpha: 0.1)
@@ -149,16 +157,17 @@ extension ContentDrawerView {
             var constraints = Constraints()
             constraints.drawerDirection = drawerDirection
             constraints.drawerWidth = drawerWidth
+            constraints.drawerHeightClosed = drawerHeightClosed
+            constraints.drawerHeightPeek = drawerHeightPeek
+            constraints.drawerHeightPartial = drawerHeightPartial
+            constraints.drawerHeightOpen = drawerHeightOpen
+
             switch drawerDirection {
             case .topDown:
                 constraints.drawerHeightOpen = Length.maximum
             case .bottomUp:
                 constraints.drawerContentInsets = UIEdgeInsets(top: 13, left: 0, bottom: 13, right: 0)
                 constraints.drawerInsets = UIEdgeInsets(top: 20, left: 0, bottom: -13, right: 0)
-                constraints.drawerHeightClosed = Length.fixed(86)
-                constraints.drawerHeightPeek = Length.fixed(86)
-                constraints.drawerHeightPartial = Length.fixed(250)
-                constraints.drawerHeightOpen = Length.maximum
             }
             return constraints
         }
