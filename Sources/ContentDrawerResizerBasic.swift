@@ -144,6 +144,11 @@ extension ContentDrawerContainer.ResizerBasic: UIGestureRecognizerDelegate {
     }
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy other: UIGestureRecognizer) -> Bool {
+        guard
+            let drawer = view?.containerDrawer.contentView,
+            other.view?.isDescendant(of: drawer) == true else {
+                return false
+        }
         guard let scrollView = other.view as? UIScrollView else { return true }
         
         if let openState = delegate?.resizer(currentOpenState: self), openState != .open {
@@ -160,7 +165,6 @@ extension ContentDrawerContainer.ResizerBasic: UIGestureRecognizerDelegate {
     }
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-
         return false
     }
     
